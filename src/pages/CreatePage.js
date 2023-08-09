@@ -31,7 +31,7 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
             <Ionicons
               name="arrow-back"
               size={30}
-              color={'#555'}
+              color={'#374151'}
             />
           </Pressable>
           <Text
@@ -114,7 +114,7 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
           <Switch
             style={{transform: [{scaleX: 1.2}, {scaleY: 1.2}]}}
             trackColor={{true: '#6DA9E4', false: '#999'}}
-            thumbColor={isVerified ? '#3DACFF' : 'gray'}
+            thumbColor={isVerified ? '#3DACFF' : '#6b7280'}
             value={isVerified}
             onValueChange={() => setIsVerified(!isVerified)}
           />
@@ -142,17 +142,17 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
     createHeaderText: {
       fontSize: 25,
       fontWeight: '800',
-      color: '#555',
+      color: '#374151',
     },
     createText: {
       marginVertical: 10,
-      color: '#555',
+      color: '#374151',
     },
     inputCreateContainer: {
       padding: 10,
       borderWidth: 1,
-      borderColor: 'gray',
-      color: '#555',
+      borderColor: '#6b7280',
+      color: '#374151',
     },
     inputNameCreateConatiner: {
       flexDirection: 'row',
@@ -162,11 +162,11 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
     inputCreateName: {
       flex: 1,
       marginVertical: 10,
-      borderColor: 'gray',
+      borderColor: '#6b7280',
     },
     verified: {
       borderWidth: 1,
-      borderColor: 'gray',
+      borderColor: '#6b7280',
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -176,8 +176,8 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
       textAlignVertical: 'top',
       borderWidth: 1,
       padding: 8,
-      borderColor: 'gray',
-      color: '#555',
+      borderColor: '#6b7280',
+      color: '#374151',
     },
     btn: {
       paddingHorizontal: 25,

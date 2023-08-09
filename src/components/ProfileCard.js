@@ -20,25 +20,6 @@ const UserProfile = ({profile, navigation, refetch}) => {
     },
   });
 
-  const deleteProfileById = () =>
-    Alert.alert('Delete Profile', 'Are you sure?', [
-      {
-        text: 'Cancel',
-        onPress: () => {
-          console.log('Cancel Pressed');
-          setOpenModal(!openModal);
-        },
-        style: 'cancel',
-      },
-      {
-        text: 'Delete',
-        onPress: () => {
-          deleteProfile();
-          setOpenModal(!openModal);
-        },
-      },
-    ]);
-
   return (
     <View style={styles.profCard}>
       <View style={styles.profNameContainer}>
@@ -76,7 +57,7 @@ const UserProfile = ({profile, navigation, refetch}) => {
               {openModal && (
               <View style={{position:'absolute', top:20, left:0, width:200}}>
                 <Pressable 
-                  onPress={() => { navigation.navigate('Edit', {id: profile.id});
+                  onPress={() => { navigation.navigate('Edit Page', {id: profile.id});
                   setOpenModal(!openModal); }}>
                   <Text>
                     {' '}
@@ -115,7 +96,7 @@ const UserProfile = ({profile, navigation, refetch}) => {
                 style={styles.modalHeading}>
                 Remove Profile
               </Text>
-              <Ionicons name="close" size={30} color= '#555'  onPress={() => setOpenDeleteModal(false)} />
+              <Ionicons name="close" size={30} color= '#374151'  onPress={() => setOpenDeleteModal(false)} />
             </View>
             <View>
               <Text style={{ height: 1, borderWidth: 1, borderColor: '#D2D2D2', marginVertical: 10, }} />

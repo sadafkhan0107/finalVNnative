@@ -46,12 +46,12 @@ const App = () => {
             options={{title: 'Home', headerShown: false}}
           />
           <Stack.Screen
-            name="Create"
+            name="Create Page"
             component={CreatePage}
             options={{title: 'Create Page', headerShown: false}}
           />
           <Stack.Screen
-            name="Edit"
+            name="Edit Page"
             component={EditPage}
             options={{title: 'Edit Page', headerShown: false}}
           />

@@ -136,7 +136,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
           <Switch
             style={{transform: [{scaleX: 1.2}, {scaleY: 1.2}]}}
             trackColor={{true: '#6DA9E4', false: '#999'}}
-            thumbColor={isVerified ? '#3DACFF' : 'gray'}
+            thumbColor={isVerified ? '#3DACFF' : '#6b7280'}
             value={isVerified}
             onValueChange={() => setIsVerified(!isVerified)}
           />
@@ -164,24 +164,24 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
     editHeaderText: {
       fontSize: 25,
       fontWeight: '800',
-      color: '#555',
+      color: '#374151',
     },
     profileDescription: {
       textAlignVertical: 'top',
       borderWidth: 1,
       padding: 8,
-      borderColor: 'gray',
-      color: '#555',
+      borderColor: '#6b7280',
+      color: '#374151',
     },
     editProfText: {
       marginVertical: 10,
-      color: '#555',
+      color: '#374151',
     },
     inputEditContainer: {
       padding: 10,
       borderWidth: 1,
-      borderColor: 'gray',
-      color: '#555',
+      borderColor: '#6b7280',
+      color: '#374151',
     },
     inputEditProfNameContainer: {
       flexDirection: 'row',
@@ -191,11 +191,11 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
     inputEditProfName: {
       flex: 1,
       marginVertical: 10,
-      borderColor: 'gray',
+      borderColor: '#6b7280',
     },
     verification: {
       borderWidth: 1,
-      borderColor: 'gray',
+      borderColor: '#6b7280',
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',

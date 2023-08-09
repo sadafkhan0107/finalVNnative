@@ -52,14 +52,14 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
               style={ styles.inputContainer}
               placeholder="Search "
               value={searchString}
-              onChangeText={text => debounce(handleChangeText(text), 300)}
+              onChangeText={text => debounce(handleChangeText(text), 500)}
             />
           </View>
           <View style={{flexDirection:'row', justifyContent:'flex-end',}}>
             <Pressable
               android_ripple={{color: '#5BC0F8'}}
               style={styles.btn}
-              onPress={() => navigation.navigate('Create', {refetch: refetch})}>
+              onPress={() => navigation.navigate('Create Page', {refetch: refetch})}>
               <Text>
                 <AntIcon name="adduser" color='#3DACFF' size={26} />
               </Text>
@@ -142,7 +142,7 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
       marginBottom: 25,
       padding: 5,
       borderWidth: 1,
-      borderColor: 'gray',
+      borderColor: '#6b7280',
       color: '#020617',
     },
     profileCard: {
@@ -151,7 +151,7 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
     },
     bold: {
       fontWeight: 'bold',
-      color: '#555',
+      color: '#374151',
       fontSize: 18,
       marginTop: 10,
     },
