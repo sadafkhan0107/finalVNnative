@@ -48,7 +48,7 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
         <View style={{paddingHorizontal: 10}}>
           <View>
             <TextInput
-              placeholderTextColor={'#020617'}
+              placeholderTextColor={'#020517'}
               style={ styles.inputContainer}
               placeholder="Search "
               value={searchString}
@@ -103,7 +103,7 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
               <View>
                 <Text
                   style={styles.bold}>
-                  Profiles are not available.
+                  Profile not available.
                 </Text>
               </View>
             )}
