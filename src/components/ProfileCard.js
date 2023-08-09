@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image, Alert, Pressable, Modal} from 'react-native';
+import {StyleSheet, Text, View, Image, Pressable, Modal} from 'react-native';
 import React, {useState} from 'react';
 import {useMutation} from '@apollo/client';
 import {DELETE_PROFILE} from '../queries/query';

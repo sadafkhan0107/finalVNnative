@@ -1,13 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apollo/client';
 import {setContext} from '@apollo/client/link/context';
 import {NavigationContainer} from '@react-navigation/native';
 import HomePage from './src/pages/HomePage';
