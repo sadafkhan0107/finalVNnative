@@ -25,12 +25,12 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
       fetchPolicy: 'network-only',
     });
   
-    const debounce = (func, delay) => {
-      let timer;
-      clearTimeout(timer);
+    const debounce = (callback, delay) => {
+      let timerId;
+      clearTimeout(timerId);
       return (...args) => {
-        timer = setTimeout(() => {
-          func.apply(this, args);
+        timerId = setTimeout(() => {
+          callback.apply(this, args);
         }, delay);
       };
     };

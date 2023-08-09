@@ -34,7 +34,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
         imageUrl,
         description,
         is_candidate: false,
-      },    
+      }, 
       onCompleted: () => {
         navigation.navigate('Home');
       },
