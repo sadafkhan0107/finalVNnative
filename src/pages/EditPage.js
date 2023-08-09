@@ -8,20 +8,20 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
     const {data, loading} = useQuery(GET_PROFILE_BY_ID, {
       variables: {getProfileByIdId: route.params.id},
     });
-    const [imageUrl, setImageUrl] = useState(data?.getProfileById?.first_name,);
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [description, setDescription] = useState('');
-    const [isVerified, setIsVerified] = useState(false);
+    const [imageUrl, setProfImgUrl] = useState(data?.getProfileById?.first_name,);
+    const [firstName, setProfFirstName] = useState('');
+    const [lastName, setProfLastName] = useState('');
+    const [email, setProfEmail] = useState('');
+    const [description, setProfDescription] = useState('');
+    const [isVerified, setProfIsVerified] = useState(false);
     
     useEffect(() => {
-      setFirstName(data?.getProfileById?.first_name);
-      setLastName(data?.getProfileById?.last_name);
-      setEmail(data?.getProfileById?.email);
-      setDescription(data?.getProfileById?.description);
-      setImageUrl(data?.getProfileById?.image_url);
-      setIsVerified(data?.getProfileById?.is_verified);
+      setProfFirstName(data?.getProfileById?.first_name);
+      setProfLastName(data?.getProfileById?.last_name);
+      setProfEmail(data?.getProfileById?.email);
+      setProfDescription(data?.getProfileById?.description);
+      setProfImgUrl(data?.getProfileById?.image_url);
+      setProfIsVerified(data?.getProfileById?.is_verified);
     }, [data]);
   
     const [updateProfile] = useMutation(UPDATE_PROFILE, {
@@ -75,8 +75,8 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
         </Text>
         <TextInput
           style={styles.inputEditContainer}
-          value={loading ? 'loading...' : imageUrl}
-          onChangeText={text => setImageUrl(text)}
+          value={loading ? '' : imageUrl}
+          onChangeText={text => setProfImgUrl(text)}
         />
   
         <View style={styles.inputEditProfNameContainer}>
@@ -87,8 +87,8 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
             </Text>
             <TextInput
               style={styles.inputEditContainer}
-              value={loading ? 'loading...' : firstName}
-              onChangeText={text => setFirstName(text)}
+              value={loading ? '' : firstName}
+              onChangeText={text => setProfFirstName(text)}
             />
           </View>
           <View style={styles.inputEditProfName}>
@@ -98,8 +98,8 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
             </Text>
             <TextInput
               style={styles.inputEditContainer}
-              value={loading ? 'loading...' : lastName}
-              onChangeText={text => setLastName(text)}
+              value={loading ? '' : lastName}
+              onChangeText={text => setProfLastName(text)}
             />
           </View>
         </View>
@@ -108,8 +108,8 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
         </Text>
         <TextInput
           style={styles.inputEditContainer}
-          value={loading ? 'loading...' : email}
-          onChangeText={text => setEmail(text)}
+          value={loading ? '' : email}
+          onChangeText={text => setProfEmail(text)}
         />
         <Text style={ styles.editProfText }>
           Description
@@ -119,8 +119,8 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
           multiline={true}
           numberOfLines={8}
           style={styles.profileDescription}
-          value={loading ? 'loading...' : description}
-          onChangeText={text => setDescription(text)}
+          value={loading ? '' : description}
+          onChangeText={text => setProfDescription(text)}
           placeholder="Add a description"
         />
         <Text style={ styles.editProfText }>
@@ -138,7 +138,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
             trackColor={{true: '#6DA9E4', false: '#999'}}
             thumbColor={isVerified ? '#3DACFF' : '#6b7280'}
             value={isVerified}
-            onValueChange={() => setIsVerified(!isVerified)}
+            onValueChange={() => setProfIsVerified(!isVerified)}
           />
         </View>
         <Pressable
