@@ -3,10 +3,7 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
   import {useQuery} from '@apollo/client/react';
   import {GET_ALL_PROFILES} from '../queries/query';
   import ProfileCard from '../components/ProfileCard';
-  import Ionicons from 'react-native-vector-icons/Ionicons';
   import AntIcon from 'react-native-vector-icons/AntDesign';
-  import VNlogo from '../assests/viralNationLogo.png';
-import UserProfile from '../components/ProfileCard';
   
   const HomePage = ({navigation}) => {
     const [searchString, setsearchString] = useState('');
@@ -43,17 +40,17 @@ import UserProfile from '../components/ProfileCard';
   
     return (
       <View
-        style={styles.container}>
+        style={styles.main}>
         <View
-          style={ styles.navbar }>
-          <Image source={require('../assests/viralNationLogo.png')} style={ styles.logo }/>
+          style={ styles.header }>
+          <Image source={require('../assests/viralNationLogo.png')} style={ styles.VNlogo }/>
         </View>
         <View style={{paddingHorizontal: 10}}>
           <View>
             <TextInput
               placeholderTextColor={'#999'}
               style={ styles.inputContainer}
-              placeholder="Search..."
+              placeholder="Search "
               value={searchString}
               onChangeText={text => debounce(handleChangeText(text), 300)}
             />
@@ -61,21 +58,21 @@ import UserProfile from '../components/ProfileCard';
           <View style={{flexDirection:'row', justifyContent:'flex-end',}}>
             <Pressable
               android_ripple={{color: '#5BC0F8'}}
-              style={styles.button}
+              style={styles.btn}
               onPress={() => navigation.navigate('Create', {refetch: refetch})}>
               <Text>
                 <AntIcon name="adduser" color='#3DACFF' size={26} />
               </Text>
-              <Text style={styles.btnText}>CREATE PROFILE</Text>
+              <Text style={styles.buttonText}>CREATE PROFILE</Text>
             </Pressable>
           </View>
   
-          <View style={styles.userprofile}>
+          <View style={styles.profileCard}>
             {error && (
               <View>
                 <Text
-                  style={styles.boldText}>
-                  Something went wrong!!!
+                  style={styles.bold}>
+                  Error!!!
                 </Text>
               </View>
             )}
@@ -86,7 +83,7 @@ import UserProfile from '../components/ProfileCard';
                 showsVerticalScrollIndicator={false}
                 renderItem={({item}) => (
                   <View key={item.id}>
-                    <UserProfile
+                    <ProfileCard
                       profile={item}
                       navigation={navigation}
                       refetch={refetch}
@@ -98,15 +95,15 @@ import UserProfile from '../components/ProfileCard';
             ) : loading ? (
               <View>
                 <Text
-                  style={ styles.boldText}>
+                  style={ styles.bold}>
                   Loading..
                 </Text>
               </View>
             ) : (
               <View>
                 <Text
-                  style={styles.boldText}>
-                  No Profiles Available.
+                  style={styles.bold}>
+                  Profiles are not available.
                 </Text>
               </View>
             )}
@@ -117,18 +114,18 @@ import UserProfile from '../components/ProfileCard';
   };
   
   const styles = StyleSheet.create({
-    container: {
+    main: {
       backgroundColor: 'white',
       flex: 1,
     },
-    navbar: {
+    header: {
+      paddingHorizontal: 12,
+      paddingVertical: 21,
+      backgroundColor: '#F5F5F5',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
       gap: 6,
-      paddingHorizontal: 12,
-      paddingVertical: 21,
-      backgroundColor: '#F5F5F5',
       shadowColor: '#000',
       shadowOffset: {width: 0, height: 5},
       shadowOpacity: 0.3,
@@ -140,7 +137,7 @@ import UserProfile from '../components/ProfileCard';
       gap: 6,
       alignItems: 'center',
     },
-    logo: {
+    VNlogo: {
       fontSize: 26,
       fontWeight: '700',
       color: '#333',
@@ -153,17 +150,17 @@ import UserProfile from '../components/ProfileCard';
       borderColor: 'gray',
       color: 'black',
     },
-    userprofile: {
+    profileCard: {
       marginTop: 15,
       marginBottom: 100,
     },
-    boldText: {
+    bold: {
       fontWeight: 'bold',
       color: '#555',
       fontSize: 18,
       marginTop: 10,
     },
-    button: {
+    btn: {
       padding: 7,
       borderColor:'#3DACFF',
       borderWidth:1,
@@ -172,16 +169,10 @@ import UserProfile from '../components/ProfileCard';
       justifyContent: 'center',
       borderRadius: 6
     },
-    btnText: {
+    buttonText: {
       color: '#3DACFF',
       textAlign: 'center',
       fontWeight: '700',
-    },
-    line: {
-      height: 1,
-      borderWidth: 0.5,
-      borderColor: '#D1D1D1',
-      marginTop: 5,
     },
   });
   export default HomePage;

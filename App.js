@@ -11,8 +11,8 @@ import {
 import {setContext} from '@apollo/client/link/context';
 import {NavigationContainer} from '@react-navigation/native';
 import HomePage from './src/pages/HomePage';
-import CreateProfile from './src/pages/CreateProfile';
-import EditProfile from './src/pages/EditProfile';
+import EditPage from './src/pages/EditPage';
+import CreatePage from './src/pages/CreatePage';
 
 const Stack = createStackNavigator();
 const apiUrl = 'https://api.poc.graphql.dev.vnplatform.com/graphql';
@@ -47,13 +47,13 @@ const App = () => {
           />
           <Stack.Screen
             name="Create"
-            component={CreateProfile}
-            options={{title: 'Create Profile', headerShown: false}}
+            component={CreatePage}
+            options={{title: 'Create Page', headerShown: false}}
           />
           <Stack.Screen
             name="Edit"
-            component={EditProfile}
-            options={{title: 'Edit Profile', headerShown: false}}
+            component={EditPage}
+            options={{title: 'Edit Page', headerShown: false}}
           />
         </Stack.Navigator>
       </NavigationContainer>

@@ -2,28 +2,21 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
   import React, {useState} from 'react';
   import {CREATE_PROFILE} from '../queries/query';
   import {useMutation} from '@apollo/client';
-  import {Toast} from 'react-native-toast-message/lib/src/Toast';
   import Ionicons from 'react-native-vector-icons/Ionicons';
   
-  const CreateProfile = ({navigation, route}) => {
+  const CreatePage = ({navigation, route}) => {
     const [imageUrl, setImageUrl] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [description, setDescription] = useState('');
     const [isVerified, setIsVerified] = useState(false);
-    const showToast = () => {
-      Toast.show({
-        type: 'success',
-        text1: 'Profile Created!!!',
-      });
-    };
+  
   
     const [createProfile] = useMutation(CREATE_PROFILE, { variables: {firstName, lastName, email, isVerified, imageUrl, description,},
       onCompleted: () => {
         navigation.navigate('Home');
         route.params.refetch();
-        showToast();
       },
       onError: error => {
         console.log(error);
@@ -31,9 +24,9 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
     });
     return (
       <ScrollView
-        style={styles.main}>
+        style={styles.createMain}>
         <View
-          style={styles.header}>
+          style={styles.createHeader}>
           <Pressable onPress={() => navigation.goBack()}>
             <Ionicons
               name="arrow-back"
@@ -42,7 +35,7 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
             />
           </Pressable>
           <Text
-            style={styles.headerText}>
+            style={styles.createHeaderText}>
             Create Profile
           </Text>
         </View>
@@ -56,65 +49,65 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
             }}
           />
         </View>
-        <Text style={styles.text}>
+        <Text style={styles.createText}>
           Image Link
         </Text>
         <TextInput
-          style={styles.inputContainer}
+          style={styles.inputCreateContainer}
           value={imageUrl}
           onChangeText={text => setImageUrl(text)}
         />
-        <View style={styles.inputNameContainer}>
-          <View style={styles.inputName}>
+        <View style={styles.inputNameCreateConatiner}>
+          <View style={styles.inputCreateName}>
             <Text
-              style={styles.text}>
+              style={styles.createText}>
               First Name
             </Text>
             <TextInput
-              style={styles.inputContainer}
+              style={styles.inputCreateContainer}
               value={firstName}
               onChangeText={text => setFirstName(text)}
             />
           </View>
-          <View style={styles.inputName}>
+          <View style={styles.inputCreateName}>
             <Text
-              style={styles.text}>
+              style={styles.createText}>
               Last Name
             </Text>
             <TextInput
-              style={ styles.inputContainer}
+              style={ styles.inputCreateContainer}
               value={lastName}
               onChangeText={text => setLastName(text)}
             />
           </View>
         </View>
-        <Text style={styles.text}>
+        <Text style={styles.createText}>
           Email
         </Text>
         <TextInput
-          style={styles.inputContainer}
+          style={styles.inputCreateContainer}
           value={email}
           onChangeText={text => setEmail(text)}
         />
-        <Text style={styles.text}>
+        <Text style={styles.createText}>
           Description
         </Text>
         <TextInput
           placeholderTextColor={'#999'}
           multiline={true}
           numberOfLines={8}
-          style={styles.description}
+          style={styles.createDescription}
           value={description}
           onChangeText={text => setDescription(text)}
-          placeholder="Write a description for the talent"
+          placeholder="Add a description"
         />
-        <Text style={styles.text}>
+        <Text style={styles.createText}>
           Verification
         </Text>
-        <View style={styles.talent}>
+        <View style={styles.verified}>
           <View>
             <Text
-              style={styles.text}>
+              style={styles.createText}>
               Talent Verified
             </Text>
           </View>
@@ -128,55 +121,50 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
         </View>
         <Pressable
           android_ripple={{color: '#5BC0F8'}}
-          style={styles.button}
+          style={styles.btn}
           onPress={() => createProfile()}>
-          <Text style={styles.btnText}>CREATE</Text>
+          <Text style={styles.buttonText}>CREATE</Text>
         </Pressable>
       </ScrollView>
     );
   };
   const styles = StyleSheet.create({
-    main: {
+    createMain: {
       padding: 15,
       backgroundColor: 'white',
     },
-    header: {
+    createHeader: {
       marginBottom: 15,
       flexDirection: 'row',
       alignItems: 'center',
       gap: 30,
     },
-    headerText: {
+    createHeaderText: {
       fontSize: 25,
       fontWeight: '800',
       color: '#555',
     },
-    text: {
+    createText: {
       marginVertical: 10,
       color: '#555',
     },
-    inputContainer: {
+    inputCreateContainer: {
       padding: 10,
       borderWidth: 1,
       borderColor: 'gray',
       color: '#555',
     },
-    inputNameContainer: {
+    inputNameCreateConatiner: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       gap: 20,
     },
-    line: {
-      flexDirection: 'row',
-      flex: 1,
-      justifyContent: 'space-between',
-    },
-    inputName: {
+    inputCreateName: {
       flex: 1,
       marginVertical: 10,
       borderColor: 'gray',
     },
-    talent: {
+    verified: {
       borderWidth: 1,
       borderColor: 'gray',
       alignItems: 'center',
@@ -184,25 +172,25 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
       justifyContent: 'space-between',
       padding: 10,
     },
-    description: {
+    createDescription: {
       textAlignVertical: 'top',
       borderWidth: 1,
       padding: 8,
       borderColor: 'gray',
       color: '#555',
     },
-    button: {
+    btn: {
       paddingHorizontal: 25,
       paddingVertical: 10,
       backgroundColor: '#3DACFF',
       alignSelf: 'flex-end',
       marginVertical: 40,
     },
-    btnText: {
+    buttonText: {
       fontWeight: '800',
       color: '#fff',
     },
   });
   
-  export default CreateProfile;
+  export default CreatePage;
   

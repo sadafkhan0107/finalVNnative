@@ -2,10 +2,9 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
   import React, {useEffect, useState} from 'react';
   import {GET_PROFILE_BY_ID, UPDATE_PROFILE} from '../queries/query';
   import {useMutation, useQuery} from '@apollo/client';
-  import {Toast} from 'react-native-toast-message/lib/src/Toast';
   import Ionicons from 'react-native-vector-icons/Ionicons';
   
-  const EditProfile = ({navigation, route}) => {
+  const EditPage = ({navigation, route}) => {
     const {data, loading} = useQuery(GET_PROFILE_BY_ID, {
       variables: {getProfileByIdId: route.params.id},
     });
@@ -15,12 +14,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
     const [email, setEmail] = useState('');
     const [description, setDescription] = useState('');
     const [isVerified, setIsVerified] = useState(false);
-    const showToast = () => {
-      Toast.show({
-        type: 'success',
-        text1: 'Profile Updated!!!',
-      });
-    };
+    
     useEffect(() => {
       setFirstName(data?.getProfileById?.first_name);
       setLastName(data?.getProfileById?.last_name);
@@ -43,20 +37,17 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
       },
       onCompleted: () => {
         navigation.navigate('Home');
-        showToast();
       },
       onError: error => {
         console.log(error);
       },
     });
   
-    console.log(route.params.id, 'editdata');
-    console.log(data?.getProfileById, 'editdata');
     return (
       <ScrollView
         style={styles.main}>
         <View
-          style={ styles.header }>
+          style={ styles.editHeader }>
           <Pressable onPress={() => navigation.goBack()}>
             <Ionicons
               name="arrow-back"
@@ -65,7 +56,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
             />
           </Pressable>
           <Text
-            style={styles.headerText}>
+            style={styles.editHeaderText}>
             Edit Profile
           </Text>
         </View>
@@ -79,66 +70,66 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
             }}
           />
         </View>
-        <Text style={ styles.text }>
+        <Text style={ styles.editProfText }>
           Image Link
         </Text>
         <TextInput
-          style={styles.inputContainer}
+          style={styles.inputEditContainer}
           value={loading ? 'loading...' : imageUrl}
           onChangeText={text => setImageUrl(text)}
         />
   
-        <View style={styles.inputNameContainer}>
-          <View style={styles.inputName}>
+        <View style={styles.inputEditProfNameContainer}>
+          <View style={styles.inputEditProfName}>
             <Text
-              style={ styles.text }>
+              style={ styles.editProfText }>
               First Name
             </Text>
             <TextInput
-              style={styles.inputContainer}
+              style={styles.inputEditContainer}
               value={loading ? 'loading...' : firstName}
               onChangeText={text => setFirstName(text)}
             />
           </View>
-          <View style={styles.inputName}>
+          <View style={styles.inputEditProfName}>
             <Text
-              style={ styles.text }>
+              style={ styles.editProfText }>
               Last Name
             </Text>
             <TextInput
-              style={styles.inputContainer}
+              style={styles.inputEditContainer}
               value={loading ? 'loading...' : lastName}
               onChangeText={text => setLastName(text)}
             />
           </View>
         </View>
-        <Text style={ styles.text }>
+        <Text style={ styles.editProfText }>
           Email
         </Text>
         <TextInput
-          style={styles.inputContainer}
+          style={styles.inputEditContainer}
           value={loading ? 'loading...' : email}
           onChangeText={text => setEmail(text)}
         />
-        <Text style={ styles.text }>
+        <Text style={ styles.editProfText }>
           Description
         </Text>
         <TextInput
           placeholderTextColor={'#999'}
           multiline={true}
           numberOfLines={8}
-          style={styles.description}
+          style={styles.profileDescription}
           value={loading ? 'loading...' : description}
           onChangeText={text => setDescription(text)}
-          placeholder="Write a description for the talent"
+          placeholder="Add a description"
         />
-        <Text style={ styles.text }>
+        <Text style={ styles.editProfText }>
           Verification
         </Text>
-        <View style={styles.talent}>
+        <View style={styles.verification}>
           <View>
             <Text
-              style={styles.text}>
+              style={styles.editProfText}>
               Talent Verified
             </Text>
           </View>
@@ -152,62 +143,57 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
         </View>
         <Pressable
           android_ripple={{color: '#5BC0F8'}}
-          style={styles.button}
+          style={styles.btn}
           onPress={() => updateProfile()}>
-          <Text style={styles.btnText}>EDIT</Text>
+          <Text style={styles.buttonText}>EDIT</Text>
         </Pressable>
       </ScrollView>
     );
   };
   const styles = StyleSheet.create({
-    line: {
-      flexDirection: 'row',
-      flex: 1,
-      justifyContent: 'space-between',
-    },
     main: {
       padding: 15,
       backgroundColor: 'white',
     },
-    header: {
+    editHeader: {
       marginBottom: 15,
       flexDirection: 'row',
       alignItems: 'center',
       gap: 30,
     },
-    headerText: {
+    editHeaderText: {
       fontSize: 25,
       fontWeight: '800',
       color: '#555',
     },
-    description: {
+    profileDescription: {
       textAlignVertical: 'top',
       borderWidth: 1,
       padding: 8,
       borderColor: 'gray',
       color: '#555',
     },
-    text: {
+    editProfText: {
       marginVertical: 10,
       color: '#555',
     },
-    inputContainer: {
+    inputEditContainer: {
       padding: 10,
       borderWidth: 1,
       borderColor: 'gray',
       color: '#555',
     },
-    inputNameContainer: {
+    inputEditProfNameContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       gap: 20,
     },
-    inputName: {
+    inputEditProfName: {
       flex: 1,
       marginVertical: 10,
       borderColor: 'gray',
     },
-    talent: {
+    verification: {
       borderWidth: 1,
       borderColor: 'gray',
       alignItems: 'center',
@@ -215,18 +201,18 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
       justifyContent: 'space-between',
       padding: 10,
     },
-    button: {
+    btn: {
       paddingHorizontal: 25,
       paddingVertical: 10,
       backgroundColor: '#3DACFF',
       alignSelf: 'flex-end',
       marginVertical: 40,
     },
-    btnText: {
+    buttonText: {
       fontWeight: '800',
       color: '#fff',
     },
   });
   
-  export default EditProfile;
+  export default EditPage;
   
