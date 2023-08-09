@@ -2,7 +2,6 @@ import {StyleSheet, Text, View, Image, Alert, Pressable, Modal} from 'react-nati
 import React, {useState} from 'react';
 import {useMutation} from '@apollo/client';
 import {DELETE_PROFILE} from '../queries/query';
-import {Toast} from 'react-native-toast-message/lib/src/Toast';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -10,19 +9,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const UserProfile = ({profile, navigation, refetch}) => {
   const [openModal, setOpenModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const showToast = () => {
-    Toast.show({
-      type: 'success',
-      text1: 'Profile Deleted!!!',
-      position: 'bottom',
-    });
-  };
 
   const [deleteProfile] = useMutation(DELETE_PROFILE, {
     variables: {deleteProfileId: profile.id},
     onCompleted: () => {
       refetch();
-      showToast();
     },
     onError: error => {
       console.log(error);

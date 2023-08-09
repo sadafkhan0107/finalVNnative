@@ -43,12 +43,12 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
         style={styles.main}>
         <View
           style={ styles.header }>
-          <Image source={require('../assests/viralNationLogo.png')} style={ styles.VNlogo }/>
+          <Image source={require('../assests/viralNationLogo.png')} />
         </View>
         <View style={{paddingHorizontal: 10}}>
           <View>
             <TextInput
-              placeholderTextColor={'#999'}
+              placeholderTextColor={'#020617'}
               style={ styles.inputContainer}
               placeholder="Search "
               value={searchString}
@@ -78,7 +78,7 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
             )}
             {data?.getAllProfiles.size > 0 ? (
               <FlatList
-                style={{height: '77%'}}
+                style={{height: '80%'}}
                 data={data.getAllProfiles.profiles}
                 showsVerticalScrollIndicator={false}
                 renderItem={({item}) => (
@@ -119,28 +119,23 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
       flex: 1,
     },
     header: {
-      paddingHorizontal: 12,
-      paddingVertical: 21,
-      backgroundColor: '#F5F5F5',
+      paddingHorizontal: 10,
+      paddingVertical: 18,
+      backgroundColor: '#fafafa',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
       gap: 6,
       shadowColor: '#000',
       shadowOffset: {width: 0, height: 5},
-      shadowOpacity: 0.3,
-      shadowRadius: 4,
+      shadowOpacity: 0.4,
+      shadowRadius: 5,
       elevation: 10,
     },
     icons: {
       flexDirection: 'row',
-      gap: 6,
+      gap: 5,
       alignItems: 'center',
-    },
-    VNlogo: {
-      fontSize: 26,
-      fontWeight: '700',
-      color: '#333',
     },
     inputContainer: {
       marginTop: 25,
@@ -148,11 +143,11 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
       padding: 5,
       borderWidth: 1,
       borderColor: 'gray',
-      color: 'black',
+      color: '#020617',
     },
     profileCard: {
-      marginTop: 15,
-      marginBottom: 100,
+      marginTop: 12,
+      marginBottom: 120,
     },
     bold: {
       fontWeight: 'bold',
@@ -161,7 +156,7 @@ import {View, Text, StyleSheet, TextInput, Pressable, FlatList, Image} from 'rea
       marginTop: 10,
     },
     btn: {
-      padding: 7,
+      padding: 8,
       borderColor:'#3DACFF',
       borderWidth:1,
       flexDirection: 'row',
