@@ -40,12 +40,12 @@ const UserProfile = ({profile, navigation, refetch}) => {
     ]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.nameContainer}>
+    <View style={styles.profCard}>
+      <View style={styles.profNameContainer}>
         {profile?.image_url.includes('https') ? (
           <Image source={{uri: `${profile.image_url}`}} width={45} height={45} style={styles.image} />
         ) : (
-          <View style={styles.displayPic}>
+          <View style={styles.profPicDisplay}>
             <Text style={{color: '#999', fontWeight: '800'}}>
               {profile?.first_name.slice(0, 1).toUpperCase()}
             </Text>
@@ -150,42 +150,25 @@ const UserProfile = ({profile, navigation, refetch}) => {
 export default UserProfile;
 
 const styles = StyleSheet.create({
-  name: {
-    fontWeight: 'bold',
-    color: '#555',
-  },
-  email: {
-    fontWeight: 'normal',
-    color: '#555',
-  },
-  info: {
-    flexDirection: 'row',
-    gap: 5,
-  },
-  nameContainer: {
+  profNameContainer: {
     flexDirection: 'row',
     gap: 10,
   },
-  displayPic: {
+  profPicDisplay: {
     width: 45,
     alignItems: 'center',
     justifyContent: 'center',
     height: 45,
     borderRadius: 100,
     backgroundColor: '#D8D8D8',
-    color: '#555',
-  },
-  description: {
-    marginTop: 10,
-    textAlign: 'justify',
-    color: '#555',
+    color: '#6b7280',
   },
   line: {
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-between',
   },
-  container: {
+  profCard: {
     padding: 10,
     marginVertical: 10,
     gap: 8,
@@ -211,7 +194,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#999',
   },
-  modalHeading: {fontSize: 25, fontWeight: '500', color: '#555'},
+  modalHeading: {
+    fontSize: 25, 
+    fontWeight: '500', 
+    color: '#6b7280'
+  },
   modalView: {
     backgroundColor: '#F5F5F5',
     width: '85%',
@@ -220,7 +207,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   modalContent: {
-    color: '#555',
+    color: '#6b7280',
     fontSize: 15,
     fontWeight: '600',
     marginVertical: 20,
@@ -232,15 +219,15 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   modalButtonDelete: {
-    padding: 8,
-    width: '40%',
+    padding: 10,
+    width: '50%',
     backgroundColor: '#C51605',
-    borderRadius: 2,
+    borderRadius: 4,
   },
   modalButtonText: {
     fontSize: 18,
     fontWeight: '500',
-    color: '#fff',
+    color: '#f8fafc',
     textAlign: 'center',
   },
 });
