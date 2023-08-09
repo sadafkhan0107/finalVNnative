@@ -52,7 +52,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
             <Ionicons
               name="arrow-back"
               size={30}
-              color={'#555'}
+              color={'#6b7280'}
             />
           </Pressable>
           <Text
@@ -65,7 +65,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
             style={{
               height: 1,
               borderWidth: 1,
-              borderColor: '#D2D2D2',
+              borderColor: '#d3d1d2',
               marginVertical: 4,
             }}
           />
@@ -115,7 +115,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
           Description
         </Text>
         <TextInput
-          placeholderTextColor={'#999'}
+          placeholderTextColor={'#9ca3af'}
           multiline={true}
           numberOfLines={8}
           style={styles.profileDescription}
@@ -135,7 +135,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
           </View>
           <Switch
             style={{transform: [{scaleX: 1.2}, {scaleY: 1.2}]}}
-            trackColor={{true: '#6DA9E4', false: '#999'}}
+            trackColor={{true: '#6DA9E4', false: '#9ca3af'}}
             thumbColor={isVerified ? '#3DACFF' : '#6b7280'}
             value={isVerified}
             onValueChange={() => setProfIsVerified(!isVerified)}
@@ -210,7 +210,7 @@ import {ScrollView,StyleSheet,TextInput,Text,View,Switch,Pressable} from 'react-
     },
     buttonText: {
       fontWeight: '800',
-      color: '#fff',
+      color: '#f9fafb',
     },
   });
   

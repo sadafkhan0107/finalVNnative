@@ -93,7 +93,7 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
           Description
         </Text>
         <TextInput
-          placeholderTextColor={'#999'}
+          placeholderTextColor={'#9ca3af'}
           multiline={true}
           numberOfLines={8}
           style={styles.createDescription}
@@ -113,7 +113,7 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
           </View>
           <Switch
             style={{transform: [{scaleX: 1.2}, {scaleY: 1.2}]}}
-            trackColor={{true: '#6DA9E4', false: '#999'}}
+            trackColor={{true: '#6DA9E4', false: '#9ca3af'}}
             thumbColor={isVerified ? '#3DACFF' : '#6b7280'}
             value={isVerified}
             onValueChange={() => setIsVerified(!isVerified)}
@@ -188,7 +188,7 @@ import {ScrollView, StyleSheet, TextInput, Text, View, Switch, Pressable} from '
     },
     buttonText: {
       fontWeight: '800',
-      color: '#fff',
+      color: '#f9fafb',
     },
   });
   

@@ -27,7 +27,7 @@ const UserProfile = ({profile, navigation, refetch}) => {
           <Image source={{uri: `${profile.image_url}`}} width={45} height={45} style={styles.image} />
         ) : (
           <View style={styles.profPicDisplay}>
-            <Text style={{color: '#999', fontWeight: '800'}}>
+            <Text style={{color: '#9ca3af', fontWeight: '800'}}>
               {profile?.first_name.slice(0, 1).toUpperCase()}
             </Text>
           </View>
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   },
   modalText: {
     textAlign: 'center',
-    color: '#999',
+    color: '#9ca3af',
   },
   modalHeading: {
     fontSize: 25, 
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   modalButtonCancel: {
     padding: 8,
     width: '40%',
-    backgroundColor: '#999',
+    backgroundColor: '#9ca3af',
     borderRadius: 2,
   },
   modalButtonDelete: {
